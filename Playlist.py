@@ -11,7 +11,7 @@ class Playlist:
     #create a new song object
     new_song = Song(title)
     #set the new song to the first song 
-    new_song.get_next_song = self.__first_song
+    new_song.next = self.__first_song
     #set the head to the new song
     self.__first_song = new_song
 
@@ -20,7 +20,15 @@ class Playlist:
   # TODO: Create a method called find_song that searches for whether a song exits in the playlist and returns its index. The method has one parameters, title, which is the title of the song to be searched for. If the song is found, return its index.
 
   def find_song(self, title):
-    pass
+    current_song = self.__first_song
+    counter = 0
+
+    while current_song != None:
+      if current_song == title:
+        return current_song
+      counter += 1
+      current_song = current_song.next
+    return counter
 
 
   # TODO: Create a method called remove_song that removes a song from the playlist. This method takes one parameter, title, which is the song that should be removed. 
@@ -33,7 +41,14 @@ class Playlist:
   # TODO: Create a method called length, which returns the number of songs in the playlist.
 
   def length(self):
-   pass
+   counter = 0
+   current_song = self.__first_song
+
+   while current_song != None:
+     counter +=  1
+     current_song = current_song.next
+    
+   return counter
   # TODO: Create a method called print_songs that prints a numbered list of the songs in the playlist.
 
   # Example:
