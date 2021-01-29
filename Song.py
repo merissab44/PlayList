@@ -34,12 +34,3 @@ class Song:
   # TODO: Using the __repr__ dunder method, return a string formatted as the following:'Song Title -> Next Song Title'
   def __repr__(self):
     return f"Song Playing: {self.__title} -> Up Next: {self.__next_song}"
-
-
-song1 = Song('hello')
-
-print(song1.set_title('hello'))
-
-print(str(song1))
-song1.set_next_song('goobye')
-print(repr(song1))
