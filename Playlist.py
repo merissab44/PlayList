@@ -24,17 +24,34 @@ class Playlist:
     counter = 0
 
     while current_song != None:
-      if current_song == title:
-        return current_song
+      if current_song.get_title() == title:
+        return counter
       counter += 1
       current_song = current_song.next
-    return counter
+    return -1
 
 
   # TODO: Create a method called remove_song that removes a song from the playlist. This method takes one parameter, title, which is the song that should be removed. 
 
   def remove_song(self, title):
-    pass
+    current_song = self.__first_song
+    previous_song = None
+
+    while current_song.get_title() != None:
+      if current_song.get_title() != title:
+        previous_song = current_song
+        current_song = current_song.next
+      # If the previous song points to the song I want to remove
+      # then set the pointer to the next next song
+      if current_song.get_title() == title:
+        if previous_song == None:
+          self.__first_song = None
+          return
+        if current_song.next == None:
+          previous_song.next = None
+          return
+        previous_song.next = current_song.next
+        return
 
 
 
@@ -57,4 +74,4 @@ class Playlist:
   # 3. Song Title 3
 
   def print_songs(self):
-    pass
+   pass
